@@ -13,8 +13,8 @@ allErrors <- read.table('Analysis/allErrors.txt', header = T, stringsAsFactors =
 
 colnames(allErrors)[c(3,7)] <- c('SPE', 'targetSP')
 
-runAnyway <- FALSE
-xDomain = -4:4
+runAnyway <- TRUE
+xDomain = -1
 
 bootstrapPValue <- function(theseData, numItemsInStream, whichSPE, nReps){
   nTrials <- nrow(theseData)
@@ -64,7 +64,7 @@ bootstrapPValue <- function(theseData, numItemsInStream, whichSPE, nReps){
 numItemsInStream = 24
 
 pFiles <- list.files(pattern = 'bootstrapPValues8Streams.*\\.csv', 
-                     path = 'Analysis', 
+                     path = 'Analysis/Bootstrap', 
                      full.names = T)
 
 if(length(pFiles)>0 & !runAnyway){
